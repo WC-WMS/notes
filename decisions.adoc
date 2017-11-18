@@ -1,0 +1,17 @@
+= Descisions
+blackgwe <spam-1g-2w@posteo.de>
+
+== Documentation
+* only in Asciidoctor format http://asciidoctor.org/
+
+
+TIP: Pro tip...
+
+IMPORTANT: Don't forget ösd ölksd löfk sdlöfk södlkslö dkfösldkf söldkf öls
+lö  öfdsölk öl ksdölkf södlk ölsdfkö sldkk föslf
+
+WARNING: Watch out for...
+
+CAUTION: Ensure that...
+
+contact {author} {email}
