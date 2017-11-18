@@ -15,6 +15,12 @@ blackgwe <spam-1g-2w@posteo.de>
 
 :sourcedir: src/main/java/
 
+= Math formulae
+
+[asciimath]
+++++
+sum_(i=1)^n i^3=((n(n+1))/2)^2
+++++
 
 [stem]
 ++++
