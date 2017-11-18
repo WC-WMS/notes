@@ -8,11 +8,15 @@ blackgwe <spam-1g-2w@posteo.de>
 ** hmmm
 
 ---
-`link:./zzzinclude.asciidoc.adoc[./zzzinclude.asciidoc.adoc]`
 
 `link:zzzinclude.asciidoc.adoc[zzzinclude.asciidoc.adoc]`
 
+:sourcedir: src/main/java/
+
+
 include::zzzinclude.asciidoc.adoc[]
+
+include::{sourcedir}zzzinclude.asciidoc.adoc[]
 
 image::https://yuml.me/c9ce39b0.png[]
 
