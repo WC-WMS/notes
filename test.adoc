@@ -1,6 +1,8 @@
 = Descisions
 blackgwe <spam-1g-2w@posteo.de>
 
+:toc: right
+
 == Documentation
 * only in Asciidoctor format http://asciidoctor.org/
 ** rendered with https://github.com/asciidoctor/asciidoctor.js[asciidoctor.js] / https://github.com/asciidoctor/asciidoctor-chrome-extension[Chrome & Firefox Extension]
@@ -12,6 +14,8 @@ blackgwe <spam-1g-2w@posteo.de>
 `link:zzzinclude.asciidoc.adoc[zzzinclude.asciidoc.adoc]`
 
 :sourcedir: src/main/java/
+
+
 
 
 include::zzzinclude.asciidoc.adoc[]
