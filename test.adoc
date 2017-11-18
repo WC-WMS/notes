@@ -16,7 +16,10 @@ blackgwe <spam-1g-2w@posteo.de>
 :sourcedir: src/main/java/
 
 
-
+[stem]
+++++
+sqrt(4) = 2
+++++
 
 include::zzzinclude.asciidoc.adoc[]
 
