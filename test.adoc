@@ -29,6 +29,24 @@ latexmath:[C = \alpha + \beta Y^{\gamma} + \epsilon]
 kbd:[Ctrl+Alt+Delete]
 
 btn:[Save]
+
+math:[Cu^(2+)]
+
+[latexmath]
+++++
+\int_0^1 x^n= \frac{1}{n+1}
+++++
+---
+
+[lowerroman, start=5]
+. Five
+. Six
+[loweralpha]
+.. a
+.. b
+.. c
+. Seven
+
 ---
 
 === Notes
