@@ -1,21 +1,6 @@
-= Descisions
+= Math formulae
 blackgwe <spam-1g-2w@posteo.de>
 
-:toc: right
-
-== Documentation
-* only in Asciidoctor format http://asciidoctor.org/
-** rendered with https://github.com/asciidoctor/asciidoctor.js[asciidoctor.js] / https://github.com/asciidoctor/asciidoctor-chrome-extension[Chrome & Firefox Extension]
-** http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[Syntax quick-reference]
-** hmmm
-
----
-
-`link:zzzinclude.asciidoc.adoc[zzzinclude.asciidoc.adoc]`
-
-:sourcedir: src/main/java/
-
-= Math formulae
 
 [asciimath]
 ++++
@@ -26,12 +11,6 @@ sum_(i=1)^n i^3=((n(n+1))/2)^2
 ++++
 sqrt(4) = 2
 ++++
-
-include::zzzinclude.asciidoc.adoc[]
-
-include::{sourcedir}zzzinclude.asciidoc.adoc[]
-
-image::https://yuml.me/c9ce39b0.png[]
 
 latexmath:[C = \alpha + \beta Y^{\gamma} + \epsilon]
 
@@ -376,15 +355,6 @@ Note that we can only use an API as long as authorization isn't required.
 //
 To suggest an addition, file an https://github.com/asciidoctor/docgist/issues/[issue]!
 ====
-
-
-
-
-
-
-
-
-
 
 
 contact {author} {email}
