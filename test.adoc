@@ -1,6 +1,32 @@
 = Descisions
 blackgwe <spam-1g-2w@posteo.de>
 
+// Document specific and general custom
+// content files are used:
+:docinfo2:
+
+// Include general custom content files:
+//:docinfo1:
+// Include document specific content files:
+
+//:docinfo:
+// In generated HTML this is transformed
+// to <meta name="description" content="..."/>
+
+:description: Sample document with custom header and footer parts.
+// In generated HTML this is transformed
+// to <meta name="keywords" content="..."/>
+
+:keywords: Asciidoctor, header, footer, docinfo
+ 
+Using the `docinfo` attributes we can include custom content
+in the header and footer. Contents of the files
+named `docinfo.html` and `docinfo-footer.html` are included.
+ 
+We can choose between general or document specific custom
+header and footer content.
+:keywords: documentation, example
+
 :toc: right
 toc::[]
 
@@ -67,5 +93,152 @@ math:[Cu^(2+)]
 . Seven
 
 ---
+
+You can use it inline as well, for example:
+
+[source,asciidoc]
+....
+Water (stem:[H_2O]) is a critical component.
+....
+
+Which renders like this: Water (stem:[H_2O]) is a critical component.
+
+[TIP]
+There's no need for special delimiters around the expression as the MathJax documentation suggests.
+This is handled automatically by Asciidoctor!
+
+The default notation is AsciiMath, but LaTeX can be used like this:
+
+[source,asciidoc]
+....
+latexmath:[C = \alpha + \beta Y^{\gamma} + \epsilon]
+....
+
+latexmath:[C = \alpha + \beta Y^{\gamma} + \epsilon]
+
+[[ui-macros]]
+=== icon:keyboard-o[] Keyboard shortcuts and more
+
+:url-ui-macros: http://asciidoctor.org/docs/user-manual/#user-interface-macros
+
+This is a common shortcut on Windows systems: kbd:[Ctrl+Alt+Delete].
+
+Here's the source:
+....
+btn:[Save]
+....
+
+[NOTE]
+Here on DocGist we use actual (extra small) buttons from Bootstrap.
+In normal Asciidoctor it would have looked more along the lines of *[ Save ]*.
+
+Yet another nifty feature, representing a menu item:
+
+menu:File[New...]
+
+Source:
+
+[source,asciidoc]
+....
+menu:File[New...]
+....
+
+[IMPORTANT]
+Representing keyboard shortcuts, buttons, and menu items are experimental features in Aciidoctor.
+DocGist has the `experimental` flag set by default for your convenience!
+
+For the reference documentation, see {url-ui-macros}[User Interface Macros].
+
+[[tips]]
+=== icon:exclamation-circle[] Tips and tricks
+
+Links to other DocGists can use this syntax: `+link:./?5897167[DocGist intro]+` which renders as link:./?
+5897167[DocGist intro].
+This makes things easier in case you run DocGist locally to fiddle with the "`backend`" (it's a frontend 
+really).
+
+You can view the source Gist of this page by clicking on the green button in the navbar.
+
+How about some UML?
+The following image is included using the syntax [src-asciidoc]`image::http://yuml.me/c9ce39b0.png[]`.
+
+image::http://yuml.me/c9ce39b0.png[]
+
+The URL is a reference to a yUML image.
+yUML is tool for creating UML diagrams online.
+
+[[source-documents]]
+=== icon:file-text-o[] Source documents
+
+DocGist can view documents fetched from a number of different sources.
+It parses the URL to find out how to use it, and tries to be a bit smart to keep DocGist URLs short.
+
+[horizontal]
+GitHub Gist::
+A public or private GitHub Gist can be used.
+Example URL: https://gist.github.com/nawroth/5897167
+
+Dropbox Public folder::
+Put a file in the _Public_ folder of your Dropbox, grab the URL to it.
+Example URL: https://dl.dropboxusercontent.com/u/10666617/AsciiDoc/example.adoc
+
+Dropbox shared private file::
+Use the share-link of a private file in Dropbox.
+Example URL: https://www.dropbox.com/s/ttib5v9pfs23p9z/example.adoc
+
+Copy.com::
+Use the public link to the document.
+Example URL: https://copy.com/LdKsHnQbEZsl29BW
+
+Etherpad::
+http://etherpad.org/[Etherpad] is an online editor providing collaborative editing in real-time.
+There are different Etherpad hosts, these are ones that worked well when we tried them:
+https://beta.etherpad.org/, https://piratepad.ca/, https://factor.cc/pad/, https://pad.systemli.org/, htt
+ps://pad.fnordig.de/, https://notes.typo3.org/, https://pad.lqdn.fr/, https://pad.okfn.org/, https://beta
+.publishwith.me/, https://etherpad.tihlde.org/, https://pad.tihlde.org/, https://etherpad.wikimedia.org/,
+ https://etherpad.fr/, https://piratenpad.de/, https://bitpad.co.nz/, http://notas.dados.gov.br/, http://
+free.primarypad.com/, http://board.net/, https://pad.odoo.com/, http://pad.planka.nu/, http://qikpad.co.u
+k/, http://pad.tn/, http://lite4.framapad.org/, http://pad.hdc.pw/
+Note that the content might get removed from the host after some time.
+Example URL: https://beta.etherpad.org/p/docgist
+
+Google Docs Documents::
+Write normal AsciiDoc in the document.
+Then use the _share_ link, set so that anyone with the link can view (at least) the document.
+Example URL: https://docs.google.com/document/d/1lEQTEAQRVxTtDfQ1N9HJ6azeOLYCKlGG17NOs72NWsU/edit
+
+Any URL::
+DocGist accepts documents from any host which allows for cross-domain requests.
+This is the kind of error you'll see in the console when a host doesn't support it:
++
+....
+No 'Access-Control-Allow-Origin' header is present on the requested resource.
+Origin 'http://gist.asciidoctor.org' is therefore not allowed access.
+....
++
+To make it work, the server should respond with one of the following headers:
+`Access-Control-Allow-Origin:http://gist.asciidoctor.org` or
+`Access-Control-Allow-Origin:*`.
+
+[TIP]
+.Additional services that should get added?
+====
+Please tell us if there's some additional service you'd like to see support for.
+There's two different ways a host can be integrated:
+
+Direct file access::
+Dropbox and Google Docs are examples of this.
+We only calculate the URL of the file, and request it.
+The server must respond with the correct headers as outlined above.
+
+
+Through a public API::
+This is what we use for GitHub.
+Note that we can only use an API as long as authorization isn't required.
+
+//
+To suggest an addition, file an https://github.com/asciidoctor/docgist/issues/[issue]!
+====
+
 
 contact {author} {email}
