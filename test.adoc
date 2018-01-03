@@ -13,30 +13,62 @@ blackgwe <spam-1g-2w@posteo.de>
 // In generated HTML this is transformed
 // to <meta name="description" content="..."/>
 
-:description: Sample document with custom header and footer parts.
+:description: Sample document.
 // In generated HTML this is transformed
 // to <meta name="keywords" content="..."/>
 
-:keywords: Asciidoctor, header, footer, docinfo
- 
-Using the `docinfo` attributes we can include custom content
-in the header and footer. Contents of the files
-named `docinfo.html` and `docinfo-footer.html` are included.
- 
-We can choose between general or document specific custom
-header and footer content.
 :keywords: documentation, example
 
-:toc: right
 toc::[]
+
+Please look at https://github.com/powerman/asciidoc-cheatsheet
+
+:toc:
+:toclevels: 4
+:Some attr: Some value
+
+== Level 1
+Text.
+
+=== Level 2
+Text.
+
+==== Level 3
+Text.
+
+===== Level 4
+Text.
+
+.Optional Title
+NOTE: This is an example
+      single-paragraph note.
+
+CAUTION: Caution.
+
+WARNING: Warning.
+
+IMPORTANT: Important.
+
+TIP: Tip.
+
+[quote, cite-author-test, cite-source-test]
+____
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus amet.
+____
+
 
 see  http://fontawesome.io/icons/
 icon:code[] test icon
 
-=== icon:address-book[] test icon
+**icon:address-book[]** icon:arrows[] icon:file-text-o[] 
+(C) (R) (TM) -- ... -> <- => <= &#182;
+n__i__**b**
 
-=== icon:arrows[] test icon
-
+[format="csv",cols="2"]
+|====================================
+not Escaped, "_italic_, &#182;"
+Escaped, "\_italic_, \&#182;"
+|====================================
 
 == Documentation
 * only in Asciidoctor format http://asciidoctor.org/
@@ -53,35 +85,81 @@ doctor/asciidoctor-chrome-extension[Chrome & Firefox Extension]
 
 = Math formulae
 
+using asciimath
 [asciimath]
 ++++
-sum_(i=1)^n i^3=((n(n+1))/2)^2
+sum(i=1)^n i^3=((n(n+1))/2)^2 \\
+\int_0^1 x^n= \frac{1}{n+1}
 ++++
 
-[stem]
-++++
-sqrt(4) = 2
-++++
-
-include::zzzinclude.asciidoc.adoc[]
-
-include::{sourcedir}zzzinclude.asciidoc.adoc[]
-
-image::https://yuml.me/c9ce39b0.png[]
-
-latexmath:[C = \alpha + \beta Y^{\gamma} + \epsilon]
-
-kbd:[Ctrl+Alt+Delete]
-
-btn:[Save]
-
-math:[Cu^(2+)]
-
+using latexmath
 [latexmath]
 ++++
 \int_0^1 x^n= \frac{1}{n+1}
 ++++
----
+
+inline latexmath latexmath:[\int_0^1 x^n= \frac{1}{n+1}]
+
+arrange equations among each other using asciimath:
+[asciimath]
++++++++++++++++++++
+x_1=1+4(x_3)^2\\	
+\ \ \ \ = 2*x_2\\
+\ \ \ \ = 5 - x_4
++++++++++++++++++++
+Source
+[source,asciimath]
+............................
+[asciimath]
++++++++++++++++++++
+x_1=1+4(x_3)^2\\	
+\ \ \ \ = 2*x_2\\
+\ \ \ \ = 5 - x_4
++++++++++++++++++++
+............................
+
+[TIP]
+There's no need for special delimiters around the expression as the MathJax documentation suggests.
+This is handled automatically by Asciidoctor!
+
+Including a file is very simple:
+include::zzzinclude.asciidoc.adoc[]
+
+Including a file with sourcedir
+
+include::{sourcedir}zzzinclude.asciidoc.adoc[]
+
+==== UML
+
+image::https://yuml.me/c9ce39b0.png[]
+
+Source Code with callouts
+[source,ruby,numbered]
+---------------------------------------------------------------------
+#
+# Useful Ruby base class extensions.
+#
+if $0 == __FILE__                                 # <1>
+  puts 'Array#cycle test'                         
+  [true, false].cycle([0, 1, 2, 3, 4]) do |a, b|
+    puts "#{a.inspect} => #{b.inspect}"           # <2>
+  end
+end
+---------------------------------------------------------------------
+
+<1> First callout.
+<2> Second callout.
+
+:url-google: http://www.google.ch
+Don't forget to set the `experimental` flag for your convenience (kbd/btn feature) 
+or recherche {url-google}[Google].
+	
+kbd:[Ctrl+Alt+Delete]
+btn:[Save]
+`TEST`
+
+menu:File[New...]
+
 
 [lowerroman, start=5]
 . Five
@@ -94,132 +172,14 @@ math:[Cu^(2+)]
 
 ---
 
-You can use it inline as well, for example:
-
-[source,asciidoc]
-....
+stem inline
 Water (stem:[H_2O]) is a critical component.
-....
 
-Which renders like this: Water (stem:[H_2O]) is a critical component.
-
-[TIP]
-There's no need for special delimiters around the expression as the MathJax documentation suggests.
-This is handled automatically by Asciidoctor!
-
-The default notation is AsciiMath, but LaTeX can be used like this:
-
-[source,asciidoc]
-....
-latexmath:[C = \alpha + \beta Y^{\gamma} + \epsilon]
-....
-
-latexmath:[C = \alpha + \beta Y^{\gamma} + \epsilon]
-
-[[ui-macros]]
-=== icon:keyboard-o[] Keyboard shortcuts and more
-
-:url-ui-macros: http://asciidoctor.org/docs/user-manual/#user-interface-macros
-
-This is a common shortcut on Windows systems: kbd:[Ctrl+Alt+Delete].
-
-Here's the source:
-....
-btn:[Save]
-....
-
-[NOTE]
-Here on DocGist we use actual (extra small) buttons from Bootstrap.
-In normal Asciidoctor it would have looked more along the lines of *[ Save ]*.
-
-Yet another nifty feature, representing a menu item:
-
-menu:File[New...]
-
-Source:
-
-[source,asciidoc]
-....
-menu:File[New...]
-....
-
-[IMPORTANT]
-Representing keyboard shortcuts, buttons, and menu items are experimental features in Aciidoctor.
-DocGist has the `experimental` flag set by default for your convenience!
-
-For the reference documentation, see {url-ui-macros}[User Interface Macros].
-
-[[tips]]
-=== icon:exclamation-circle[] Tips and tricks
-
-Links to other DocGists can use this syntax: `+link:./?5897167[DocGist intro]+` which renders as link:./?
-5897167[DocGist intro].
-This makes things easier in case you run DocGist locally to fiddle with the "`backend`" (it's a frontend 
-really).
-
-You can view the source Gist of this page by clicking on the green button in the navbar.
-
-How about some UML?
-The following image is included using the syntax [src-asciidoc]`image::http://yuml.me/c9ce39b0.png[]`.
+UML using yUML (url to an yUML image) yUML is a tool for creating UML diagrams online.
 
 image::http://yuml.me/c9ce39b0.png[]
 
-The URL is a reference to a yUML image.
-yUML is tool for creating UML diagrams online.
-
-[[source-documents]]
-=== icon:file-text-o[] Source documents
-
-DocGist can view documents fetched from a number of different sources.
-It parses the URL to find out how to use it, and tries to be a bit smart to keep DocGist URLs short.
-
-[horizontal]
-GitHub Gist::
-A public or private GitHub Gist can be used.
-Example URL: https://gist.github.com/nawroth/5897167
-
-Dropbox Public folder::
-Put a file in the _Public_ folder of your Dropbox, grab the URL to it.
-Example URL: https://dl.dropboxusercontent.com/u/10666617/AsciiDoc/example.adoc
-
-Dropbox shared private file::
-Use the share-link of a private file in Dropbox.
-Example URL: https://www.dropbox.com/s/ttib5v9pfs23p9z/example.adoc
-
-Copy.com::
-Use the public link to the document.
-Example URL: https://copy.com/LdKsHnQbEZsl29BW
-
-Etherpad::
-http://etherpad.org/[Etherpad] is an online editor providing collaborative editing in real-time.
-There are different Etherpad hosts, these are ones that worked well when we tried them:
-https://beta.etherpad.org/, https://piratepad.ca/, https://factor.cc/pad/, https://pad.systemli.org/, htt
-ps://pad.fnordig.de/, https://notes.typo3.org/, https://pad.lqdn.fr/, https://pad.okfn.org/, https://beta
-.publishwith.me/, https://etherpad.tihlde.org/, https://pad.tihlde.org/, https://etherpad.wikimedia.org/,
- https://etherpad.fr/, https://piratenpad.de/, https://bitpad.co.nz/, http://notas.dados.gov.br/, http://
-free.primarypad.com/, http://board.net/, https://pad.odoo.com/, http://pad.planka.nu/, http://qikpad.co.u
-k/, http://pad.tn/, http://lite4.framapad.org/, http://pad.hdc.pw/
-Note that the content might get removed from the host after some time.
-Example URL: https://beta.etherpad.org/p/docgist
-
-Google Docs Documents::
-Write normal AsciiDoc in the document.
-Then use the _share_ link, set so that anyone with the link can view (at least) the document.
-Example URL: https://docs.google.com/document/d/1lEQTEAQRVxTtDfQ1N9HJ6azeOLYCKlGG17NOs72NWsU/edit
-
-Any URL::
-DocGist accepts documents from any host which allows for cross-domain requests.
-This is the kind of error you'll see in the console when a host doesn't support it:
-+
-....
-No 'Access-Control-Allow-Origin' header is present on the requested resource.
-Origin 'http://gist.asciidoctor.org' is therefore not allowed access.
-....
-+
-To make it work, the server should respond with one of the following headers:
-`Access-Control-Allow-Origin:http://gist.asciidoctor.org` or
-`Access-Control-Allow-Origin:*`.
-
+=== Tips
 [TIP]
 .Additional services that should get added?
 ====
@@ -237,8 +197,7 @@ This is what we use for GitHub.
 Note that we can only use an API as long as authorization isn't required.
 
 //
-To suggest an addition, file an https://github.com/asciidoctor/docgist/issues/[issue]!
+To suggest an addition, file an https://github.com/xxx/yyy/issues/[issue]!
 ====
-
 
 contact {author} {email}
