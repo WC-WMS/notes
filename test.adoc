@@ -19,6 +19,7 @@ blackgwe <spam-1g-2w@posteo.de>
 
 :keywords: documentation, example
 
+link:ex-stem.adoc[]
 toc::[]
 
 Please look at https://github.com/powerman/asciidoc-cheatsheet
