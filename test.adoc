@@ -172,6 +172,14 @@ menu:File[New...]
 
 ---
 
+[source,xml]
+----
+<section>
+  <title>Section Title</title> <!--1-->
+</section>
+----
+<1> The section title is required.
+
 stem inline
 Water (stem:[H_2O]) is a critical component.
 
